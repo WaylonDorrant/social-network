@@ -1,25 +1,16 @@
 import React from "react";
 import "./profile.css"
 import avatar from "../../img/brat2.jpg"
-import avatarMini from "../../img/brat1.png"
+import Posts from "./posts/Posts";
 
-function Profile() {
+function Profile(props) {
   return (
     <div className="profile">
       <div className="me">
         <img src={avatar} alt="" />
-        <p>Bart Simpson</p>
+        <p>{props.name}</p>
       </div>
-      <div className="posts">
-        <h2>My Posts</h2>
-        <input type="text" placeholder="Enter The Post" />
-        <button>Add Post</button>
-        <div className="post">
-          <img src={avatarMini} alt="" />
-          <span>Bart Simpson</span>
-          <p>Some Text</p>
-        </div>
-      </div>
+      <Posts name={props.name} />
     </div>
   )
 }

@@ -1,0 +1,25 @@
+.dialogs{
+    padding: 50px;
+    
+}
+
+.dialogs h2{
+    font-size: 4em;
+}
+
+.dialog{
+    display: grid;
+    grid-template-columns: 3fr 9fr;
+    margin: 5px;
+}
+
+.message{
+    background: rgb(174, 195, 176);
+    padding: 5px;
+    border-radius: 5px;
+    margin: 0;
+}
+
+.name{
+    margin: 0;
+}
