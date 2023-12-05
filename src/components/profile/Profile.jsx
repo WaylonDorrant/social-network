@@ -1,15 +1,12 @@
 import React from "react";
 import "./profile.css"
-import avatar from "../../img/brat2.jpg"
 import Posts from "./posts/Posts";
+import ProfileInfo from "./profileInfo/ProfileInfo";
 
 function Profile(props) {
   return (
     <div className="profile">
-      <div className="me">
-        <img src={avatar} alt="" />
-        <p>{props.name}</p>
-      </div>
+      <ProfileInfo name={props.name} />
       <Posts name={props.name} />
     </div>
   )
