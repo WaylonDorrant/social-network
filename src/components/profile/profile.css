@@ -30,3 +30,10 @@
 .posts{
     margin: 20px 0;
 }
+
+.likes{
+    background-color: rgb(18, 65, 220);
+    color: rgb(233, 216, 22);
+    width: fit-content;
+    padding: 5px;
+}
