@@ -9,7 +9,7 @@ function Dialogs(props) {
         <div className="dialogs">
             <h2>Dialogs</h2>
             <div className="dialogs">
-               {props.dialogData.map( e => <Dialog name={e.name} message={e.message} id={e.id} />)}
+               {props.dialogPage.dialogData.map( e => <Dialog name={e.name} message={e.message} id={e.id} />)}
               
             </div>
 
