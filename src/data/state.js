@@ -1,3 +1,5 @@
+import rerenderTree from "../render"
+
 
 let state = {
     profilePage: {
@@ -22,18 +24,27 @@ let state = {
         ]
     }
 }
-export let addPost = (postText) =>{
-    let newPost={
-        text: (postText),
+export let addPost = (postText) => {
+    let newPost = {
+        message: (postText),
         id: 4,
-        Likes: 0,
-        
+        likes: 0,
+
     }
-    state.profilePage.postData.push(newPost)
-    console.log(state);
+    state.profilePage.postData.unshift(newPost)
+    rerenderTree(state)
 }
 
+export let addMessage = (messageText) => {
+    let newMessage = {
+        name: "John Doe",
+        message: (messageText),
+        id: 4,
 
+    }
+    state.dialogPage.dialogData.unshift(newMessage)
+    rerenderTree(state)
+}
 
 
 export default state
