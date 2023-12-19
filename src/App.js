@@ -7,6 +7,7 @@ import Dialogs from './components/dialogs/Dialogs';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function App(props) {
+  console.log(props);
   return (
     <div className="wrapper">
       <BrowserRouter>
@@ -14,9 +15,29 @@ function App(props) {
         <Navbar />
         <div className="wrapper-content">
           <Routes>
-            <Route exact path="/" element={<Profile name="Bart Simpson" profilePage={props.state.profilePage} addPost={props.addPost} />} />
-            <Route path="/profile" element={<Profile name="Bart Simpson" profilePage={props.state.profilePage} addPost={props.addPost} />} />
-            <Route path='/dialogs' element={<Dialogs dialogPage={props.state.dialogPage} addMessage={props.addMessage} />} />
+            <Route exact path="/" element={<Profile
+              name="Bart Simpson"
+              profilePage={props.state.profilePage}
+              addPost={props.addPost}
+              newPostText={props.state.profilePage.newPostText}
+              onPostChange={props.onPostChange} />} />
+
+
+            <Route path="/profile" element={<Profile
+              name="Bart Simpson"
+              profilePage={props.state.profilePage}
+              addPost={props.addPost}
+              newPostText={props.state.profilePage.newPostText}
+              onPostChange={props.onPostChange}
+            />} />
+
+
+            <Route path='/dialogs' element={<Dialogs
+              dialogPage={props.state.dialogPage}
+              addMessage={props.addMessage}
+              newDialogText={props.state.dialogPage.newDialogText} 
+              onDialogChange={props.onDialogChange}
+              />} />
           </Routes>
 
         </div>

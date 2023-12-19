@@ -7,7 +7,14 @@ function Profile(props) {
   return (
     <div className="profile">
       <ProfileInfo name={props.name} />
-      <Posts name={props.name} postData={props.profilePage.postData} addPost={props.addPost} />
+      <Posts
+        name={props.name}
+        postData={props.profilePage.postData}
+        addPost={props.addPost}
+        newPostText={props.newPostText}
+        onPostChange={props.onPostChange}
+      />
+
     </div>
   )
 }

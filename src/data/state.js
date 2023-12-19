@@ -8,7 +8,8 @@ let state = {
             { message: "Im Bart Simpson", id: 2, likes: 2 },
             { message: "I Love Yall", id: 3, likes: 7 },
 
-        ]
+        ],
+        newPostText: ""
     },
 
     dialogPage: {
@@ -21,7 +22,8 @@ let state = {
             { name: "Jim Cary", message: "Im the best Comic", id: 3 },
             { name: "Jim Cary", message: "Im the best Comic", id: 3 },
 
-        ]
+        ],
+        newDialogText:""
     }
 }
 export let addPost = (postText) => {
@@ -32,6 +34,7 @@ export let addPost = (postText) => {
 
     }
     state.profilePage.postData.unshift(newPost)
+    state.profilePage.newPostText=""
     rerenderTree(state)
 }
 
@@ -43,8 +46,18 @@ export let addMessage = (messageText) => {
 
     }
     state.dialogPage.dialogData.unshift(newMessage)
+    state.dialogPage.newDialogText=""
     rerenderTree(state)
 }
 
+export let onPostChange=(text)=>{
+    state.profilePage.newPostText=text
+    rerenderTree(state)
+}
+
+export let onDialogChange=(text) =>{
+    state.dialogPage.newDialogText=text
+    rerenderTree(state)
+}
 
 export default state
