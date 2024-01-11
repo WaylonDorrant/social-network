@@ -3,19 +3,17 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { addPost, addMessage, onPostChange, onDialogChange, } from './data/state';
-import state from './data/state';
-import { subscribe } from './data/state';
+import store from './data/state';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 let rerenderTree = (state) => {
   root.render(
     <React.StrictMode>
       <App state={state}
-        addPost={addPost}
-        addMessage={addMessage}
-        onPostChange={onPostChange}
-        onDialogChange={onDialogChange}
+        addPost={store.addPost.bind(store)}
+        addMessage={store.addMessage.bind(store)}
+        onPostChange={store.onPostChange.bind(store)}
+        onDialogChange={store.onDialogChange.bind(store)}
       />
 
     </React.StrictMode>
@@ -27,6 +25,6 @@ let rerenderTree = (state) => {
 reportWebVitals();
 
 export default rerenderTree
-rerenderTree(state)
+rerenderTree(store._state)
 
-subscribe(rerenderTree)
+store.subscribe(rerenderTree)
