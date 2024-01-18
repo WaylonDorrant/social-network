@@ -17,26 +17,23 @@ function App(props) {
             <Route exact path="/" element={<Profile
               name="Bart Simpson"
               profilePage={props.state.profilePage}
-              addPost={props.addPost}
               newPostText={props.state.profilePage.newPostText}
-              onPostChange={props.onPostChange} />} />
+              dispatch={props.dispatch} />} />
 
 
             <Route path="/profile" element={<Profile
               name="Bart Simpson"
               profilePage={props.state.profilePage}
-              addPost={props.addPost}
+              dispatch={props.dispatch}
               newPostText={props.state.profilePage.newPostText}
-              onPostChange={props.onPostChange}
             />} />
 
 
             <Route path='/dialogs' element={<Dialogs
               dialogPage={props.state.dialogPage}
-              addMessage={props.addMessage}
-              newDialogText={props.state.dialogPage.newDialogText} 
-              onDialogChange={props.onDialogChange}
-              />} />
+              dispatch={props.dispatch}
+              newDialogText={props.state.dialogPage.newDialogText}
+            />} />
           </Routes>
 
         </div>

@@ -10,9 +10,9 @@ function Profile(props) {
       <Posts
         name={props.name}
         postData={props.profilePage.postData}
-        addPost={props.addPost}
+        dispatch={props.dispatch}
         newPostText={props.newPostText}
-        onPostChange={props.onPostChange}
+        
       />
 
     </div>

@@ -8,11 +8,11 @@ let dialogText = React.createRef()
 
 function Dialogs(props) {
     let addMessage = () => {
-        props.addMessage(dialogText.current.value)
+        props.dispatch({type: "ADD-MESSAGE", text:dialogText.current.value})
         dialogText.current.value = ""
     }
     let onDialogChange=() => {
-        props.onDialogChange(dialogText.current.value)
+        props.dispatch({type: "DIALOG-CHANGE", text:dialogText.current.value})
     }
     return (
         <div className="dialogs">

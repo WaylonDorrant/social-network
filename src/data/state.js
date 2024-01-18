@@ -36,38 +36,36 @@ let store = {
         this.rerenderTree = observer
     },
 
-    addPost(postText) {
-        let newPost = {
-            message: (postText),
-            id: 4,
-            likes: 0,
 
+
+    dispatch(action) {
+        if (action.type == "ADD-POST") {
+            let newPost = {
+                message: (action.text),
+                id: 4,
+                likes: 0,
+            }
+            this._state.profilePage.postData.unshift(newPost)
+            this._state.profilePage.newPostText = ""
+            this.rerenderTree(this._state)
+        } else if (action.type == "POST-CHANGE") {
+            this._state.profilePage.newPostText = action.text
+            this.rerenderTree(this._state)
+        } else if (action.type == "ADD-MESSAGE") {
+            let newMessage = {
+                name: "John Doe",
+                message: (action.text),
+                id: 4,
+            }
+            this._state.dialogPage.dialogData.unshift(newMessage)
+            this._state.dialogPage.newDialogText = ""
+            this.rerenderTree(this._state)
+        } else if (action.type == "DIALOG-CHANGE"){
+            this._state.dialogPage.newDialogText = action.text
+            this.rerenderTree(this._state)
         }
-        this._state.profilePage.postData.unshift(newPost)
-        this._state.profilePage.newPostText = ""
-        this.rerenderTree(this._state)
-    },
+    }
 
-    addMessage(messageText) {
-        let newMessage = {
-            name: "John Doe",
-            message: (messageText),
-            id: 4,
 
-        }
-        this._state.dialogPage.dialogData.unshift(newMessage)
-        this._state.dialogPage.newDialogText = ""
-        this.rerenderTree(this._state)
-    },
-
-    onPostChange(text) {
-        this._state.profilePage.newPostText = text
-        this.rerenderTree(this._state)
-    },
-
-    onDialogChange(text) {
-        this._state.dialogPage.newDialogText = text
-        this.rerenderTree(this._state)
-    },
 }
 export default store
