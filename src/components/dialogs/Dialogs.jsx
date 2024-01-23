@@ -1,18 +1,27 @@
 import React from "react";
 import "./dialogs.css"
 import Dialog from "./dialog/Dialog";
-import { onDialogChange } from "../../data/state";
+import { onDialogChangeAC,addMessageAC } from "../../data/state";
+
 
 let dialogText = React.createRef()
 
 
+
 function Dialogs(props) {
+
+   
+
     let addMessage = () => {
-        props.dispatch({type: "ADD-MESSAGE", text:dialogText.current.value})
+        props.dispatch(
+            addMessageAC(dialogText.current.value)
+        )
         dialogText.current.value = ""
     }
-    let onDialogChange=() => {
-        props.dispatch({type: "DIALOG-CHANGE", text:dialogText.current.value})
+    let onDialogChange = () => {
+        props.dispatch(
+            onDialogChangeAC(dialogText.current.value)
+        )
     }
     return (
         <div className="dialogs">

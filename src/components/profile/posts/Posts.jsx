@@ -1,15 +1,20 @@
 import React from "react";
-
 import Post from "./post/Post";
+import { addPostAC,onPostChangeAC } from "../../../data/state";
+
 
 let postText = React.createRef()
 function Posts(props) {
+   
+
+
     let addPost = () => {
-        props.dispatch({type:"ADD-POST", text:postText.current.value });
+        props.dispatch(addPostAC(postText.current.value));
         postText.current.value = ""
     }
     let onPostChange = () => {
-        props.dispatch({type:"POST-CHANGE", text:postText.current.value})
+        props.dispatch(
+            onPostChangeAC(postText.current.value))
     }
 
     return (
@@ -17,9 +22,9 @@ function Posts(props) {
             <h2>My Posts</h2>
             <input value={props.newPostText}
                 ref={postText} type="text"
-                placeholder="Enter The Post" 
+                placeholder="Enter The Post"
                 onChange={onPostChange}
-                />
+            />
 
 
             <button onClick={addPost} >Add Post</button>

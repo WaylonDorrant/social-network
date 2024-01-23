@@ -1,3 +1,7 @@
+const ADD_POST="ADD-POST"
+const POST_CHANGE="POST-CHANGE"
+const ADD_MESSAGE="ADD-MESSAGE"
+const DIALOG_CHANGE="DIALOG-CHANGE"
 
 let store = {
 
@@ -39,7 +43,7 @@ let store = {
 
 
     dispatch(action) {
-        if (action.type == "ADD-POST") {
+        if (action.type == ADD_POST) {
             let newPost = {
                 message: (action.text),
                 id: 4,
@@ -48,10 +52,10 @@ let store = {
             this._state.profilePage.postData.unshift(newPost)
             this._state.profilePage.newPostText = ""
             this.rerenderTree(this._state)
-        } else if (action.type == "POST-CHANGE") {
+        } else if (action.type ==  POST_CHANGE) {
             this._state.profilePage.newPostText = action.text
             this.rerenderTree(this._state)
-        } else if (action.type == "ADD-MESSAGE") {
+        } else if (action.type == ADD_MESSAGE) {
             let newMessage = {
                 name: "John Doe",
                 message: (action.text),
@@ -60,7 +64,7 @@ let store = {
             this._state.dialogPage.dialogData.unshift(newMessage)
             this._state.dialogPage.newDialogText = ""
             this.rerenderTree(this._state)
-        } else if (action.type == "DIALOG-CHANGE"){
+        } else if (action.type == DIALOG_CHANGE){
             this._state.dialogPage.newDialogText = action.text
             this.rerenderTree(this._state)
         }
@@ -69,3 +73,36 @@ let store = {
 
 }
 export default store
+
+
+export let addPostAC = (text) => {
+    return {
+        type: "ADD-POST",
+        text: text
+    }
+}
+
+
+export let onPostChangeAC = (text) =>{
+    return {
+        type: "POST-CHANGE",
+        text: text,
+    }
+}
+
+
+
+
+export let addMessageAC = (text) => {
+    return {
+        type: "ADD-MESSAGE",
+        text: text
+    }
+}
+
+export let onDialogChangeAC = (text) => {
+    return {
+        type: "DIALOG-CHANGE",
+        text: text
+    }
+}
