@@ -22,6 +22,6 @@ let rerenderTree = (state) => {
 reportWebVitals();
 
 export default rerenderTree
-rerenderTree(store._state)
+rerenderTree(store.getState())
 
 store.subscribe(rerenderTree)
