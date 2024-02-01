@@ -1,7 +1,7 @@
 import React from "react";
 import "./dialogs.css"
 import Dialog from "./dialog/Dialog";
-import { onDialogChangeAC,addMessageAC } from "../../data/state";
+import { onDialogChangeAC,addMessageAC } from "../../data/dialogReduser";
 
 
 let dialogText = React.createRef()

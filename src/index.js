@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import store from './data/state';
+import store from './data/store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 let rerenderTree = (state) => {
@@ -24,4 +24,6 @@ reportWebVitals();
 export default rerenderTree
 rerenderTree(store.getState())
 
-store.subscribe(rerenderTree)
+store.subscribe(() => {
+  rerenderTree(store.getState())
+})

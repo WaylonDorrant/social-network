@@ -1,7 +1,7 @@
+import dialogReduser from "./dialogReduser";
 import profileReduser from "./profileReduser";
 
-const ADD_MESSAGE = "ADD-MESSAGE"
-const DIALOG_CHANGE = "DIALOG-CHANGE"
+
 
 
 let store = {
@@ -48,20 +48,9 @@ let store = {
 
     dispatch(action) {
         this._state.profilePage = profileReduser(this._state.profilePage,action)
+        this._state.dialogPage  = dialogReduser(this._state.dialogPage,action )
         this.rerenderTree(this._state)
-        if (action.type == ADD_MESSAGE) {
-            let newMessage = {
-                name: "John Doe",
-                message: (action.text),
-                id: 4,
-            }
-            this._state.dialogPage.dialogData.unshift(newMessage)
-            this._state.dialogPage.newDialogText = ""
-            this.rerenderTree(this._state)
-        } else if (action.type == DIALOG_CHANGE) {
-            this._state.dialogPage.newDialogText = action.text
-            this.rerenderTree(this._state)
-        }
+        
     },
 
 
@@ -75,16 +64,3 @@ export default store
 
 
 
-export let addMessageAC = (text) => {
-    return {
-        type: "ADD-MESSAGE",
-        text: text
-    }
-}
-
-export let onDialogChangeAC = (text) => {
-    return {
-        type: "DIALOG-CHANGE",
-        text: text
-    }
-}
